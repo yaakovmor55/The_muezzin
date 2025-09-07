@@ -13,15 +13,15 @@ class ExportMetadata:
 
 
     def get_meta_data(self):
-        file_name = self.path.stem
-        file_type = self.path.suffix
-        absolute_path = self.path.absolute()
+        file_name = str(self.path.stem)
+        file_type = str(self.path.suffix)
+        absolute_path = str(self.path.absolute())
         stats = self.path.stat()
         size_in_mb = str(stats.st_size / (1024 **2))[:4] + "MB"
-        size_in_bytes = stats.st_size
-        creation_time = datetime.datetime.fromtimestamp(stats.st_ctime)
-        modification_time = datetime.datetime.fromtimestamp(stats.st_mtime)
-        return {
+        size_in_bytes = str(stats.st_size)
+        creation_time = str(datetime.datetime.fromtimestamp(stats.st_ctime))
+        modification_time = str(datetime.datetime.fromtimestamp(stats.st_mtime))
+        meta_data =  {
             "file_name" : file_name,
             "file_type" : file_type,
             "absolute_path" : absolute_path,
@@ -30,11 +30,9 @@ class ExportMetadata:
             "creation_time" : creation_time,
             "modification_time" : modification_time
         }
+        return meta_data
 
 
-r = ReadPath(config.path)
-e = ExportMetadata(r.path)
-e.get_meta_data()
-pprint(e.get_meta_data())
+
 
 
