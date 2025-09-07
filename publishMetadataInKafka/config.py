@@ -1,3 +1,5 @@
 import os
 
-path = "C:/podcasts/download (1).wav"
+PATH = "C:/podcasts"
+BOOTSTRAP_SERVERS = 'localhost:9092'
+PODCASTS_TOPIC = "podcasts_topic"
