@@ -3,6 +3,9 @@ import logging
 from pymongo import MongoClient
 import gridfs
 import config
+from logger import Logger
+logger = Logger.get_logger()
+
 
 class MongoCRUD:
     def __init__(self):
@@ -17,10 +20,10 @@ class MongoCRUD:
         try:
             with open(path, 'rb') as f:
                 file_id = self.fs.put(f, filename=uniq_id)
-            logging.info(f"Inserted document: {uniq_id}")
+            logger.info(f"Inserted document: {uniq_id}")
             return str(file_id)
         except PyMongoError as e:
-            logging.error(f"Failed to insert document: {e}")
+            logger.error(f"Failed to insert document: {e}")
             return None
 
 
