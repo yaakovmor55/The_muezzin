@@ -5,7 +5,6 @@ INDEX_NAME="podcasts"
 
 
 MONGO_URI = "mongodb://localhost:27017/"
-MONGO_DB = "podcasts"
-COLLECTIONS = {
-    "podcasts": "podcasts",
-}
+MONGO_DB = "podcasts_table"
+COLLECTIONS = "podcasts"
+
