@@ -1,4 +1,3 @@
-import os
 
 PATH = "C:/podcasts"
 BOOTSTRAP_SERVERS = 'localhost:9092'
