@@ -10,3 +10,4 @@ consumer = KafkaConsumer(
     auto_offset_reset="earliest",
     enable_auto_commit=True
 )
+
