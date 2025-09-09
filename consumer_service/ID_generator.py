@@ -1,7 +1,7 @@
 import hashlib
 import json
 
-
+# Uses hash to generate a unique ID
 class IDGenerator:
 
     @staticmethod
