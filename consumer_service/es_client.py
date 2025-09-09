@@ -17,7 +17,7 @@ class ElasticCrud:
 
 
 
-
+    # Creates an index in Elasticsearch
     def create_index(self):
 
         if self.es.indices.exists(index=self.index_name):
@@ -26,7 +26,7 @@ class ElasticCrud:
 
         self.es.indices.create(index=self.index_name)
 
-
+    # Inserting data to the index in Elasticsearch
     def create_data(self, doc_id, doc):
 
         self.es.index(index=self.index_name, id=doc_id, document=doc)
