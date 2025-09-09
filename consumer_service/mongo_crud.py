@@ -6,7 +6,7 @@ import config
 from logger import Logger
 logger = Logger.get_logger()
 
-
+# Mongo CRUD With gridfs
 class MongoCRUD:
     def __init__(self):
         self.client = MongoClient(config.MONGO_URI)
@@ -15,7 +15,7 @@ class MongoCRUD:
         self.fs = gridfs.GridFS(self.db)
 
 
-
+# Adding a file with gridfs to MongoDB
     def add_file(self, path, uniq_id):
         try:
             with open(path, 'rb') as f:
@@ -26,26 +26,27 @@ class MongoCRUD:
             logger.error(f"Failed to insert document: {e}")
             return None
 
-
-
-
-
-
-    def read(self, query):
+# Reading files from MongoDB with gridfs
+    def read(self, uniq_id):
         try:
-            results = list(self.collection.find(query))
-            logging.info(f"Read executed: Query={query}")
-            return results
+            file_data = self.fs.find_one({ 'filename' : uniq_id })
+            logger.info(f"Read executed: filename={uniq_id}")
+            if file_data:
+                with open("C:/Users/User/Downloads/nawdir/downloaded_file.wav", 'wb') as output_file:
+                    output_file.write(file_data.read())
+                print("File downloaded successfully")
+            else:
+                print("File not found")
+
+            return file_data
         except PyMongoError as e:
-            logging.error(f"Failed to read documents: {e}")
+            logger.error(f"Failed to read documents: {e}")
             return []
 
-    def update(self, query, update_data):
+# Deleting a file with gridfs
+    def delete(self, uniq_id):
         try:
-            result = self.collection.update_many(query, {"$set": update_data})
-            logging.info(f"Updated documents where {query} with {update_data}")
-            return result.modified_count
-        except PyMongoError as e:
-            logging.error(f"Failed to update documents: {e}")
-            return 0
-
+            self.fs.delete(uniq_id)
+            logger.info(f"delete file {uniq_id} ")
+        except Exception as e:
+            logger.error(f"Failed to delete file: {e}")

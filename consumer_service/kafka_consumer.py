@@ -4,7 +4,7 @@ import config
 from logger import Logger
 logger = Logger.get_logger()
 
-
+# Contains an instance of Consumer
 try:
     consumer = KafkaConsumer(
         config.PODCASTS_TOPIC,

@@ -12,12 +12,12 @@ try:
     es = ElasticCrud()
     es.create_index()
     m = MongoCRUD()
-    a = AudioTranscriber()
+    aut = AudioTranscriber()
+
     for msg in consumer:
         doc = msg.value
         doc = IDGenerator.generate(doc)
-        print(doc)
-        text = a.transcribe(doc["path"])
+        text = aut.transcribe(doc["path"])
         doc["metadata"]["STT"] = text
         es.create_data(doc["id"], doc["metadata"])
         m.add_file(doc["path"], doc["id"])
