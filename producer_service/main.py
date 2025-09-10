@@ -14,7 +14,7 @@ try:
         producer.send(config.PODCASTS_TOPIC,e.build_json())
     producer.flush()
     producer.close()
-    logger.info()
+    logger.info("All metadata was read and published successfully.")
 except Exception as e:
     logger.error(e)
 

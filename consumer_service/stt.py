@@ -8,6 +8,6 @@ class AudioTranscriber:
         segments, info = self.model.transcribe(file_path)
         text= " "
         for segment in segments:
-            text += segment.text + "\n"
+            text += segment.text
         return text.strip()
 
