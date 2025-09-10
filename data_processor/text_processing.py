@@ -24,7 +24,7 @@ class TextProcessing:
         bds_threat_level = "none"
         if self.bds_percent() > 49:
             bds_threat_level = "high"
-        elif self.bds_percent() < 49:
+        elif (self.bds_percent() < 49) and (self.bds_percent() > 0):
             bds_threat_level = "medium"
 
         return bds_threat_level
