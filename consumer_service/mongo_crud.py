@@ -1,5 +1,4 @@
 from pymongo.errors import PyMongoError
-import logging
 from pymongo import MongoClient
 import gridfs
 import config

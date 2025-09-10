@@ -12,7 +12,3 @@ for i,x in es.get_document().items():
     es.update(i,"bds_percent", tp.bds_percent())
     es.update(i,"is_bds", tp.bds_percent() > 49)
     es.update(i, "bds_threat_level", tp.get_bds_threat_level())
-
-
-
-
