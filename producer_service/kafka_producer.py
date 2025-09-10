@@ -9,7 +9,7 @@ try:
     producer = KafkaProducer(bootstrap_servers=[config.BOOTSTRAP_SERVERS],
                              value_serializer=lambda x:
                              json.dumps(x).encode('utf-8'))
-    logger.info()
+    logger.info("Producer successfully published")
 except Exception as e:
     logger.error(e)
 

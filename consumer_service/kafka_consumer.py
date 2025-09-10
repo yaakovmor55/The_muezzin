@@ -6,6 +6,7 @@ logger = Logger.get_logger()
 
 # Contains an instance of Consumer
 try:
+
     consumer = KafkaConsumer(
         config.PODCASTS_TOPIC,
         bootstrap_servers=[config.BOOTSTRAP_SERVERS],
@@ -13,7 +14,7 @@ try:
         auto_offset_reset="earliest",
         enable_auto_commit=True
     )
-    logger.info()
+    logger.info("Connected successfully")
 except Exception as e:
     logger.error(f"Failed to connect to listener{e}")
 

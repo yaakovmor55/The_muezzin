@@ -21,7 +21,9 @@ try:
         doc["metadata"]["STT"] = text
         es.create_data(doc["id"], doc["metadata"])
         m.add_file(doc["path"], doc["id"])
-        logger.info()
+
 except Exception as e:
     logger.error(e)
+
+
 
